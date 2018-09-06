@@ -1,33 +1,63 @@
-<h1>Eat-Da-Burger!</h1>
-
-<h2>Orders Coming Up</h2>
-
-<ul>
-  {{#each burger}}
-  {{#unless devoured}}
-  <p><span class="number">#</span> {{this.id}} <span class="name"></span> {{this.burger_name}}</p>
-    <button data-id="{{this.id}}" data-devouredState="{{devoured}}" class="devour">Devour</button>
-    {{/unless}}
-  {{/each}}
-</ul>
-
-<h2>Completed Orders</h2>
-{{#each burger}}
-  {{#if devoured}}
-  <p><span class="number">#</span> {{this.id}} <span class="name"></span> {{this.burger_name}}</p>
-    {{/if}}
-  {{/each}}
-<ul>
- 
-</ul>
-
-<h2>Order Here</h2>
-<form class="create-form">
-
-  <div class="form-group">
-    <label for="burger">Burger Name:</label>
-    <input type="text" id="burger" name="name">
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <h1>Eat-Da-Burger!</h1>
+    </div>
   </div>
 
-  <button type="submit">Submit Order</button>
-</form>
+  <div class="row">
+    <div class="col-md-4 col-sm-12">
+
+
+      <div class="card mb-5" style="width: 18rem;">
+        <div class="card-header bg-danger text-white">
+          <h4>Orders Coming Up</h4>
+        </div>
+        <ul>
+          {{#each burger}} {{#unless devoured}}
+          <p>
+            <span class="number">#</span> {{this.id}}
+            <span class="name"></span> {{this.burger_name}}
+            <br>
+            <button data-id="{{this.id}}" data-devouredState="{{devoured}}" type="button" class="btn btn-danger devour">Devour</button>
+          </p>
+          <hr> {{/unless}} {{/each}}
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-12">
+      <div class="card mb-5" style="width: 18rem;">
+        <div class="card-header bg-danger text-white">
+          <h4 class="text-center">Order Here</h4>
+        </div>
+        <div class="form-group">
+          <p class="text-center" for="burger">Burger Name:</p>
+          <div class="text-center"><input type="text" id="burger" name="name"></div>
+        </div>
+
+        <button type="button" class="btn btn-warning submit text-center">Submit Order</button>
+
+      </div>
+    </div>
+
+
+    <div class="col-md-4 col-sm-12">
+
+      <div class="card mb-5" style="width: 18rem;">
+        <div class="card-header bg-danger text-white">
+          <h4>Completed Orders</h4>
+        </div>
+
+        {{#each burger}} {{#if devoured}}
+        <p>
+          <span class="number">#</span> {{this.id}}
+          <span class="name"></span> {{this.burger_name}}</p>
+        <hr> {{/if}} {{/each}}
+        <ul>
+        </ul>
+      </div>
+    </div>
+
+
+  </div>
+</div>

@@ -22,7 +22,7 @@ $(function () {
         );
     });
 
-    $(".create-form").on("submit", function (event) {
+    $(".submit").on("click", function (event) {
         
         event.preventDefault();
 
