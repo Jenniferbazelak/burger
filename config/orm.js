@@ -5,20 +5,20 @@ function objToSql(ob) {
     var arr = [];
 
     for (var key in ob) {
-      var value = ob[key];
-      
-      if (Object.hasOwnProperty.call(ob, key)) {
-      
-        if (typeof value === "string" && value.indexOf(" ") >= 0) {
-          value = "'" + value + "'";
+        var value = ob[key];
+
+        if (Object.hasOwnProperty.call(ob, key)) {
+
+            if (typeof value === "string" && value.indexOf(" ") >= 0) {
+                value = "'" + value + "'";
+            }
+            arr.push(key + "=" + value);
         }
-        arr.push(key + "=" + value);
-      }
     }
-  
+
     // translate array of strings to a single comma-separated string
     return arr.toString();
-  }
+}
 
 
 var orm = {
@@ -33,9 +33,12 @@ var orm = {
         });
     },
 
-    insertOne: function (table, col, vals, cb) {
-        var queryString = "INSERT INTO " + table + " (" + col + ") " + "VALUES (" + vals + ")";
-        connection.query(queryString, function (err, result) {
+    insertOne: function (vals, cb) {
+        var queryString = "INSERT INTO burgers (burger_name, devoured) VALUES (?, false);";
+
+
+        console.log("queryString", queryString);
+        connection.query(queryString, [vals], function (err, result) {
             if (err) {
                 throw err;
             }

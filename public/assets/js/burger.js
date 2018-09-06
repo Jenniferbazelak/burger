@@ -31,6 +31,8 @@ $(function () {
             devoured: false
         };
 
+        console.log(newBurger);
+
        
         $.ajax("/api/burger", {
             type: "POST",

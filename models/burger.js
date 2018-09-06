@@ -8,14 +8,14 @@ var burger = {
       });
     },
     
-    create: function(cols, vals, cb) {
-      orm.insertOne("burgers", cols, vals, function(res) {
+    create: function(vals, cb) {
+      orm.insertOne(vals, function(res) {
         cb(res);
       });
     },
 
     update: function(objColVal, condition, cb) {
-      orm.updateAll("burgers", objColVal, condition, function(res) {
+      orm.updateOne("burgers", objColVal, condition, function(res) {
         cb(res);
       });
     }
